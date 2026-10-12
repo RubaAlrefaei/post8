@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tsavo WoningScan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Zilla+Slab:wght@700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#F4F1ED}
+  body{font-family:'Inter',Arial,sans-serif;color:#273338;display:flex;justify-content:center;min-height:100vh}
+  .screen{position:relative;width:100%;max-width:430px;aspect-ratio:430/932;background:#F4F1ED;overflow:hidden}
+
+  .card{position:absolute;left:3.72%;right:3.72%;top:1.93%;bottom:7.83%;background:#fff;border-radius:36px}
+
+  .pill{position:absolute;left:8.37%;right:41.4%;top:4.29%;bottom:92.7%;background:#E8F7FA;border-radius:999px}
+  .pill-text{position:absolute;left:11.63%;right:43.72%;top:5.04%;font-weight:700;font-size:min(12px,2.7907vw);line-height:1.25;color:#00ABC2;white-space:nowrap}
+
+  .h1a,.h1b,.h1c{position:absolute;left:8.37%;font-family:'Zilla Slab',Georgia,serif;font-weight:700;font-size:min(38px,8.8372vw);line-height:1.12;white-space:nowrap}
+  .h1a{right:26%;top:8.95%;color:#273338}
+  .h1b{right:31%;top:13.65%;color:#00ABC2}
+  .h1c{display:none}
+
+  .intro{position:absolute;left:8.6%;right:13.95%;top:21.14%;font-weight:400;font-size:min(12px,2.7907vw);line-height:1.9167;color:#53636C;margin:0}
+
+  .insight-title{position:absolute;left:8.37%;right:27.67%;top:31.38%;font-weight:700;font-size:min(15.5px,3.6047vw);line-height:1.2258;white-space:nowrap}
+
+  .check{position:absolute;left:8.6%;width:3.72%;height:1.72%;background:#EAF7F0;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#049B4E;font-weight:700;font-size:min(11px,2.5581vw);line-height:1}
+  .c1{top:35.09%}.c2{top:38.3%}.c3{top:41.52%}
+  .bullet{position:absolute;left:14.65%;font-weight:400;font-size:min(13.5px,3.1395vw);line-height:1.185;color:#273338;white-space:nowrap}
+  .b1{right:23.02%;top:35.03%}.b2{right:26.28%;top:38.25%}.b3{right:20.23%;top:41.47%}
+
+  .how{position:absolute;left:8.37%;right:8.37%;top:45.71%;bottom:49.14%;background:#F5FBFC;border-radius:14px}
+  .how-label{position:absolute;left:12.09%;right:67.44%;top:46.73%;font-weight:700;font-size:min(11.5px,2.6744vw);line-height:1.2174;color:#00ABC2;white-space:nowrap}
+  .how-text{position:absolute;left:12.09%;right:16.51%;top:48.59%;font-weight:400;font-size:min(11.1px,2.5814vw);line-height:1.1712;color:#273338;white-space:nowrap}
+
+  .form-title{position:absolute;left:8.37%;right:47.21%;top:52.47%;font-family:'Zilla Slab',Georgia,serif;font-weight:700;font-size:min(22px,5.1163vw);line-height:1.1818;white-space:nowrap}
+  .label{position:absolute;font-weight:700;font-size:min(12.4px,2.8837vw);line-height:1.2097;color:#273338;white-space:nowrap}
+  .postcode-label{left:8.37%;right:75.81%;top:56.82%}
+  .house-label{left:8.37%;right:71.16%;top:66.48%}
+  .addition-label{left:54.88%;right:28.6%;top:66.48%}
+
+  .field{position:absolute;background:#fff;border:1.4px solid #D7E0E4;border-radius:14px;color:#273338;font-family:'Inter',Arial,sans-serif;font-size:min(15px,3.4884vw);padding:0 min(16px,3.7209vw);outline:none}
+  .field::placeholder{color:#9AA7AE;opacity:1}
+  .field:focus{border-color:#00ABC2}
+  .postcode{left:8.37%;right:8.37%;top:59.33%;bottom:35.09%}
+  .house{left:8.37%;right:49.77%;top:68.99%;bottom:25.43%}
+  .addition{left:54.88%;right:8.37%;top:68.99%;bottom:25.43%}
+
+  .helper{position:absolute;left:8.37%;right:8.37%;top:76.29%;font-weight:400;font-size:min(11px,2.5581vw);line-height:1.5455;color:#667784;margin:0}
+
+  .terms-box{position:absolute;left:8.37%;right:87.44%;top:81.22%;bottom:16.85%;appearance:none;background:#fff;border:1.3px solid #8D9AA1;border-radius:4px;margin:0;cursor:pointer}
+  .terms-box:checked{background:#00ABC2;border-color:#00ABC2}
+  .terms-box:checked:after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:min(10px,2.3256vw);font-weight:700}
+  .terms-text{position:absolute;left:14.88%;top:81.42%;font-weight:400;font-size:min(11px,2.5581vw);line-height:1.1818;color:#273338;white-space:nowrap}
+  .terms-link{color:#00ABC2;font-weight:700;text-decoration:none}
+  .asterisk{color:#ED6B46}
+
+  .cta{position:absolute;left:8.37%;right:8.37%;top:85.09%;bottom:9.33%;border:0;border-radius:14px;background:#ED6B46;color:#fff;font-family:'Inter',Arial,sans-serif;font-weight:700;font-size:min(15px,3.4884vw);line-height:1.2;text-align:center;cursor:pointer}
+
+  .footer{position:absolute;left:0;right:0;top:92.7%;bottom:0;background:#273338}
+  .footer-accent{position:absolute;left:0;right:0;top:92.7%;height:0.54%;background:#00ABC2}
+  .footer-brand{position:absolute;left:42.33%;right:42.33%;top:94.53%;font-weight:700;font-size:min(13px,3.0233vw);line-height:1.2308;text-align:center;color:#fff;white-space:nowrap}
+  .footer-links{position:absolute;left:22.56%;right:22.56%;top:97.26%;font-weight:400;font-size:min(9.5px,2.2093vw);line-height:1.1579;text-align:center;color:#D9E0E3;white-space:nowrap}
+  .footer-links a{color:inherit;text-decoration:none}
+
+  @media (min-width:431px){
+    body{padding:16px 0}
+    .screen{box-shadow:0 10px 30px rgba(39,51,56,.08)}
+  }
+</style>
+</head>
+<body>
+  <main class="screen">
+    <div class="card"></div>
+
+    <div class="pill"></div>
+    <div class="pill-text">Gratis WoningScan · ± 2 minuten</div>
+
+    <div class="h1a">Maak je woning</div>
+    <div class="h1b">meer waard</div>
+    
+
+    <p class="intro">Beantwoord een paar korte vragen en krijg inzicht in welke verbeteringen bij jouw woning passen en mogelijk kunnen bijdragen aan de woningwaarde.</p>
+
+    <div class="insight-title">Na de WoningScan krijg je inzicht in:</div>
+
+    <div class="check c1">✓</div>
+    <div class="check c2">✓</div>
+    <div class="check c3">✓</div>
+    <div class="bullet b1">relevante verbeteringen voor jouw woning</div>
+    <div class="bullet b2">mogelijke kansen voor je woningwaarde</div>
+    <div class="bullet b3">welke stappen je als eerste kunt overwegen</div>
+
+    <div class="how"></div>
+    <div class="how-label">ZO WERKT HET</div>
+    <div class="how-text">Adres invullen → korte vragen → persoonlijk rapport</div>
+
+    <div class="form-title">Start met je woning</div>
+    <div class="label postcode-label">Postcode *</div>
+    <input class="field postcode" type="text" placeholder="1234 AB" aria-label="Postcode">
+
+    <div class="label house-label">Huisnummer *</div>
+    <div class="label addition-label">Toevoeging</div>
+    <input class="field house" type="text" placeholder="1234 AB" aria-label="Huisnummer">
+    <input class="field addition" type="text" placeholder="A" aria-label="Toevoeging">
+
+    <p class="helper">We gebruiken je adres om openbare woninggegevens op te halen en de scan af te stemmen op jouw woning.</p>
+
+    <input id="terms" class="terms-box" type="checkbox" aria-label="Algemene voorwaarden accepteren">
+    <label class="terms-text" for="terms">Ik accepteer de <a class="terms-link" href="#">algemene voorwaarden</a><span class="asterisk">*</span></label>
+
+    <button class="cta" type="button">Start de gratis WoningScan</button>
+
+    <div class="footer"></div>
+    <div class="footer-accent"></div>
+    <div class="footer-brand">Tsavo B.V.</div>
+    <div class="footer-links"><a href="#">Algemene voorwaarden</a> · <a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Contact</a></div>
+  </main>
+</body>
+</html>
